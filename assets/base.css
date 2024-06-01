@@ -123,8 +123,8 @@ body:has(.section-header .drawer-menu) .announcement-bar-section .page-width {
 
 @media screen and (min-width: 990px) {
   .header:not(.drawer-menu).page-width {
-    padding-left: 5rem;
-    padding-right: 5rem;
+    padding-left: unset;
+    padding-right: unset;
   }
 
   .page-width--narrow {
@@ -1285,7 +1285,9 @@ button.shopify-payment-button__button--unbranded {
 }
 
 .button:focus:not(:focus-visible):not(.focused),
-.shopify-payment-button__button--unbranded:focus:not(:focus-visible):not(.focused),
+.shopify-payment-button__button--unbranded:focus:not(:focus-visible):not(
+    .focused
+  ),
 .shopify-payment-button
   [role='button']:focus:not(:focus-visible):not(.focused) {
   box-shadow: inherit;
@@ -2308,6 +2310,11 @@ product-info .loading__spinner:not(.hidden) ~ *,
 }
 
 /* section-header */
+
+.section-header {
+  margin-bottom: calc(-1 * (var(--header-height, 0px) + 0 * 32px)) !important;
+}
+
 .section-header.shopify-section-group-header-group {
   z-index: 3;
 }
@@ -2523,7 +2530,7 @@ product-info .loading__spinner:not(.hidden) ~ *,
 }
 
 .header__icon {
-  color: rgb(var(--color-foreground));
+  color: #fff;
 }
 
 .header__icon span {
@@ -2783,12 +2790,33 @@ details[open] > .header__submenu {
   color: rgba(var(--color-foreground), 0.75);
 }
 
+/*.header__menu-item:after {
+  content: "";
+  position: absolute;
+  bottom: 2px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: var(--transform-origin-end);
+  transition: transform .3s;
+}
+
+@media screen and (pointer: fine) {
+  .header__menu-item:hover:after {
+    transform: scaleX(1);
+    transform-origin: var(--transform-origin-start);
+  }
+}*/
+
 .header__menu-item:hover {
   color: rgb(var(--color-foreground));
 }
 
 .header__menu-item span {
   transition: text-decoration var(--duration-short) ease;
+  color: #fff;
 }
 
 .header__menu-item:hover span {
@@ -2810,7 +2838,7 @@ details[open] > .header__menu-item .icon-caret {
 
 .header__active-menu-item {
   transition: text-decoration-thickness var(--duration-short) ease;
-  color: rgb(var(--color-foreground));
+  color: #fff;
   text-decoration: underline;
   text-underline-offset: 0.3rem;
 }
